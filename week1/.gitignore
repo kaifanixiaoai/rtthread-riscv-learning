@@ -1,0 +1,13 @@
+# compiled binaries
+args
+show_args
+hello
+*.o
+*.elf
+
+# temporary files
+*.swp
+*~
+file_io
+struct_ptr
+hello-makefile/hello
