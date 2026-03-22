@@ -1,26 +1,63 @@
 # RT-Thread RISC-V Learning
 
-这个仓库用于记录我围绕 RT-Thread、RISC-V、QEMU、BSP 和 Linux 系统开发的学习过程。
+这个仓库记录了我围绕 RT-Thread、RISC-V、QEMU、BSP 与基础系统开发所做的一系列学习与实验。
 
-## 当前目标
-- 学习 RT-Thread BSP 的基本结构
-- 学习 RISC-V QEMU BSP 的构建和运行
+目前内容以按周推进的方式整理，包含：
+- 基础工具与 C 语言练习
+- RT-Thread `qemu-virt64-riscv` BSP 的构建与运行
+- 基于 `msh` 的自定义命令实验
+- 面向 UART 的简单调试命令扩展
 
-## 仓库结构
-- `week1/`：Linux/C/Git/Makefile/readelf/objdump/gdb 基础
-- `week2/`：RT-Thread `qemu-virt64-riscv` BSP 的构建、运行、日志和笔记
-- `week3/`：自定义 msh 命令模块实战，包含真实 C 项目文件和 QEMU 验证结果
-- `week4/`：预留
+cat > ~/rtthread-riscv-learning/README.md <<'EOF'
+# RT-Thread RISC-V Learning
 
-## 当前进展
-- 已完成第 1 周基础训练
-- 已完成第 2 周 RT-Thread RISC-V QEMU BSP 的构建与运行验证
-- 已完成第 3 周实战项目：
-  - 在 RT-Thread BSP 中新增真实源码文件 `week3_demo.c`
-  - 实现并验证多个自定义 msh 命令
-  - 完成一次更贴近 BSP/驱动方向的 UART 状态读取实验
+这个仓库记录了我围绕 RT-Thread、RISC-V、QEMU、BSP 与基础系统开发所做的一系列学习与实验。
 
-## 代表性成果
+目前内容以按周推进的方式整理，包含：
+- 基础工具与 C 语言练习
+- RT-Thread `qemu-virt64-riscv` BSP 的构建与运行
+- 基于 `msh` 的自定义命令实验
+- 面向 UART 的简单调试命令扩展
+
+### Week 2
+完成了 RT-Thread `qemu-virt64-riscv` BSP 的：
+- 环境配置
+- 依赖补齐
+- `menuconfig`
+- 交叉编译
+- QEMU 启动
+- `msh` 基本验证
+
+### Week 3
+在 BSP 的 `applications/` 目录下新增了真实源码文件 `week3_demo.c`，并实现了：
+- `hello_week3`
+- `show_build_info`
+- `mem_info_simple`
+- `uart_status`
+
+### Week 4
+继续扩展 `week3_demo.c`，新增：
+- `uart_regs`
+- `uart_send_test`
+
+并完成了：
+- UART 关键寄存器读取
+- UART 发送路径验证
+- QEMU 运行结果观察
+
+## 代表性文件
+
 - `week3/project-files/week3_demo.c`
-- `week2/logs/day2.md`
 - `week3/demo/week3_demo_result.md`
+- `week4/demo/week4_uart_debug_result.md`
+- `week2/logs/day2.md`
+
+
+## 说明
+
+这里的内容以“逐步搭建、逐步验证、逐步记录”为主。  
+每一周都尽量保留了：
+- 真实代码
+- 构建与运行记录
+- 问题与处理过程
+- 阶段性总结
