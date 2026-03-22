@@ -50,3 +50,32 @@ static void uart_status(void)
         rt_kprintf("TX status  : busy\n");
 }
 MSH_CMD_EXPORT(uart_status, show uart line status register);
+
+static void uart_regs(void)
+{
+    rt_uint8_t ier = read8_uart0(UART_IER);
+    rt_uint8_t isr = read8_uart0(UART_ISR);
+    rt_uint8_t lcr = read8_uart0(UART_LCR);
+    rt_uint8_t lsr = read8_uart0(UART_LSR);
+
+    rt_kprintf("UART0 register dump\n");
+    rt_kprintf("base : %p\n", uart0_base);
+    rt_kprintf("IER  : 0x%02x\n", ier);
+    rt_kprintf("ISR  : 0x%02x\n", isr);
+    rt_kprintf("LCR  : 0x%02x\n", lcr);
+    rt_kprintf("LSR  : 0x%02x\n", lsr);
+}
+MSH_CMD_EXPORT(uart_regs, dump uart core registers);
+
+static void uart_send_test(void)
+{
+    const char *msg = "UART test from week4\r\n";
+
+    while (*msg)
+    {
+        while ((read8_uart0(UART_LSR) & UART_LSR_TX_IDLE) == 0)
+            ;
+        write8_uart0(UART_THR, *msg++);
+    }
+}
+MSH_CMD_EXPORT(uart_send_test, send a test string through uart);
