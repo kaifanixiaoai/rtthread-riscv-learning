@@ -6,6 +6,10 @@ RT-Thread qemu-virt64-riscv UART 调试命令扩展
 ## 项目目标
 在已有自定义 msh 命令模块基础上，进一步实现更贴近 BSP/驱动调试方向的 UART 查询和发送能力。
 
+## 相关文件
+- `week3/project-files/week3_demo.c`
+- `week4/project-files/week4_uart_debug_demo.c`
+
 ## 本周新增能力
 
 ### 1. uart_regs
@@ -30,7 +34,7 @@ RT-Thread qemu-virt64-riscv UART 调试命令扩展
 - 说明能够利用寄存器轮询方式完成基本发送测试
 
 ## 验证方法
-1. 修改 `week3_demo.c`
+1. 修改 BSP 中的源码文件
 2. 重新编译 BSP
 3. 使用 `./run.sh` 启动 QEMU
 4. 在 `msh />` 中执行：

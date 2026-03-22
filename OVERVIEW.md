@@ -23,6 +23,7 @@
 - 成功运行 `./run.sh`
 - 成功进入 `msh />`
 
+
 ## Week 3
 主题：
 - 自定义 `msh` 命令模块实验
@@ -34,11 +35,14 @@
 
 关键结果：
 - 新增并验证多个自定义命令
-- 完成一次从代码修改到 QEMU 验证的完整闭环## Week 4
+- 完成一次从代码修改到 QEMU 验证的完整闭环
+
+## Week 4
 主题：
 - UART 调试命令扩展
 
 产出：
+- `week4/project-files/week4_uart_debug_demo.c`
 - `week4/demo/week4_uart_debug_result.md`
 - `week4/logs/`
 
