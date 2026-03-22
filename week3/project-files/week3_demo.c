@@ -1,6 +1,7 @@
 #include <rtthread.h>
 #include <rthw.h>
 #include <finsh.h>
+#include "drv_uart.h"
 
 static void hello_week3(void)
 {
@@ -30,3 +31,22 @@ static void mem_info_simple(void)
     rt_kprintf("  ps     -> show thread status\n");
 }
 MSH_CMD_EXPORT(mem_info_simple, show simple memory hint);
+
+static void uart_status(void)
+{
+    rt_uint8_t lsr = read8_uart0(UART_LSR);
+
+    rt_kprintf("UART0 base : %p\n", uart0_base);
+    rt_kprintf("UART_LSR   : 0x%02x\n", lsr);
+
+    if (lsr & UART_LSR_RX_READY)
+        rt_kprintf("RX status  : data ready\n");
+    else
+        rt_kprintf("RX status  : no data\n");
+
+    if (lsr & UART_LSR_TX_IDLE)
+        rt_kprintf("TX status  : ready\n");
+    else
+        rt_kprintf("TX status  : busy\n");
+}
+MSH_CMD_EXPORT(uart_status, show uart line status register);
